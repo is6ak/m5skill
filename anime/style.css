@@ -1,0 +1,29 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: sans-serif;
+}
+
+.anime__card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 400px;
+    height: 300px; 
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+.anime__card-img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.anime__card-info {
+    padding: 8px;
+}

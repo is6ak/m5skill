@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="nl">
+   <head>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <title>Calendar</title>
+      <link rel="stylesheet" href="css/style.css" />
+      <script src="js/main.js" defer></script>
+   </head>
+   <body>
+      <main class="calender" aria-label="Kalender">
+         <header class="header">
+            <div style="display:flex; gap:.6rem;">
+               <button class="navbutton" id="prev" aria-label="Previous month">Prev</button>
+               <button class="navbutton" id="today" aria-label="Go to current month">Today</button>
+            </div>
+            <h2 id="date" aria-live="polite">October 2025</h2>
+            <button class="navbutton" id="next" aria-label="Next month">Next</button>
+         </header>
+         <ol class="weekdays" aria-hidden="true">
+            <li class="weekday">MA</li>
+            <li class="weekday">DI</li>
+            <li class="weekday">WO</li>
+            <li class="weekday">DO</li>
+            <li class="weekday">VR</li>
+            <li class="weekday">ZA</li>
+            <li class="weekday">ZO</li>
+         </ol>
+         <ol id="days" class="days" aria-label="Dagen van de maand"></ol>
+      </main>
+   </body>
+</html>

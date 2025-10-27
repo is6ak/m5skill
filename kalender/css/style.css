@@ -1,0 +1,187 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+:root {
+	--bg: #0E0F13;
+	--surface: #15171C;
+	--surface-2: #1B1E24;
+	--text: #E5E7EB;
+	--muted: #A1A6AF;
+	--primary: #5B8CFF;
+	--outline: #242833;
+}
+
+html,
+body {
+	height: 100%;
+}
+
+body {
+	background: var(--bg);
+	color: var(--text);
+	font: 400 1rem/1.5 system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+	display: grid;
+	place-items: center;
+	padding: 2rem;
+}
+
+.calender {
+	width: min(90vw, 56rem);
+	background: var(--surface);
+	border: 1px solid var(--outline);
+	border-radius: 1.25rem;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, .35);
+	padding: 1.25rem;
+}
+
+.header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	margin-bottom: .75rem;
+}
+
+#date {
+	font-size: clamp(1.15rem, 1rem + 1vw, 1.6rem);
+	font-weight: 600;
+	text-transform: capitalize;
+}
+
+.navbutton {
+	appearance: none;
+	border: 1px solid var(--outline);
+	background: var(--surface-2);
+	color: var(--text);
+	padding: .55rem .9rem;
+	border-radius: .75rem;
+	cursor: pointer;
+	font-weight: 600;
+	letter-spacing: .02em;
+}
+
+.navbutton:hover {
+	filter: brightness(1.1);
+}
+
+.navbutton:active {
+	transform: translateY(1px);
+}
+
+.navbutton:focus-visible {
+	outline: 2px solid var(--primary);
+	outline-offset: 2px;
+}
+
+.weekdays {
+	list-style: none;
+	display: grid;
+	grid-template-columns: repeat(7, 1fr);
+	gap: .35rem;
+	margin: .25rem 0 .6rem;
+	padding: .25rem;
+	border-radius: .75rem;
+	background: linear-gradient(0deg, var(--surface-2), var(--surface-2));
+}
+
+.weekday {
+	text-align: center;
+	font-size: .8rem;
+	color: var(--muted);
+	padding: .4rem 0;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: .06em;
+}
+
+.days {
+	list-style: none;
+	display: grid;
+	grid-template-columns: repeat(7, 1fr);
+	gap: .35rem;
+}
+
+.day,
+.empty {
+	min-height: clamp(3.2rem, 8vw, 5.2rem);
+	border-radius: .9rem;
+	border: 1px solid var(--outline);
+	background: var(--surface-2);
+	display: flex;
+	align-items: flex-start;
+	justify-content: flex-end;
+	padding: .6rem .7rem;
+	position: relative;
+}
+
+.day {
+	font-weight: 600;
+	color: var(--text);
+	transition: transform .08s ease, filter .2s ease;
+}
+
+.day:hover {
+	filter: brightness(1.06);
+}
+
+.day:active {
+	transform: translateY(1px);
+}
+
+.today {
+	border-color: color-mix(in hsl, var(--primary) 60%, var(--outline));
+	outline: 2px solid color-mix(in hsl, var(--primary) 45%, transparent);
+	outline-offset: 0;
+	box-shadow: 0 0 0 3px rgba(91, 140, 255, .15) inset;
+}
+
+.today::after {
+	content: "";
+	position: absolute;
+	inset: auto .6rem .6rem auto;
+	width: .6rem;
+	height: .6rem;
+	border-radius: 50%;
+	background: var(--primary);
+}
+
+.empty {
+	background: linear-gradient(180deg, var(--surface-2), var(--surface));
+	border-style: dashed;
+	opacity: .6;
+}
+
+@media (max-width: 640px) {
+	.calender {
+		padding: .9rem;
+	}
+
+	.weekday {
+		font-size: .72rem;
+	}
+
+	.day,
+	.empty {
+		min-height: clamp(2.6rem, 12vw, 4rem);
+		padding: .5rem;
+	}
+
+	.navbutton {
+		padding: .5rem .7rem;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	* {
+		transition: none !important;
+		animation: none !important;
+	}
+}
+
+.week-highlight {
+	background: linear-gradient(180deg, rgba(91, 140, 255, 0.08), rgba(91, 140, 255, 0.05));
+	transition: background 0.3s ease;
+}
